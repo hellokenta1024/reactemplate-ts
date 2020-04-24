@@ -1,3 +1,5 @@
+**This is a template for a react app that uses Firebase, Typescript, Redux, React Router and Styled Component**
+
 ## Setup
 
 - `yarn install`
@@ -16,7 +18,14 @@
 - Uncommentout the code to setup the firebase user in `/src/App.tsx` file
 - That's it! You already have `Authentication` and `Database` setup!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Default Screen
+![](default-screen.gif)
+
+### Desktop
+![](desktop.png)
+
+### When you login
+![](logout.png)
 
 ## Available Scripts
 
