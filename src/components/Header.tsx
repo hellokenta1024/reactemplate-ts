@@ -11,6 +11,8 @@ import {
 import { Menu as MenuIcon } from "@material-ui/icons";
 import { blue, grey } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import useModal from "../hooks/useModal";
 
 const theme = {
@@ -50,7 +52,8 @@ type Props = {
 };
 
 const Header: React.FC<Props> = ({ onDrawerToggle }) => {
-  const [, setShowModal] = useModal("login");
+  const [, setShowModal] = useModal("signin");
+  const isLoggedIn = useSelector((state) => Boolean(state.account));
   const onClickAccountButton = (type: string) => () => {
     setShowModal(true, { type });
   };
@@ -63,20 +66,24 @@ const Header: React.FC<Props> = ({ onDrawerToggle }) => {
               <Logo to="/">Logo</Logo>
             </Grid>
             <Hidden smDown>
-              <Grid item style={{ marginLeft: "auto" }}>
-                <Grid container alignItems="center" justify="center">
-                  <Grid item style={{ marginRight: "16px" }}>
-                    <Button onClick={onClickAccountButton("signin")}>
-                      ログイン
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button onClick={onClickAccountButton("signup")}>
-                      新規登録
-                    </Button>
+              {isLoggedIn ? (
+                <Button>Logout</Button>
+              ) : (
+                <Grid item style={{ marginLeft: "auto" }}>
+                  <Grid container alignItems="center" justify="center">
+                    <Grid item style={{ marginRight: "16px" }}>
+                      <Button onClick={onClickAccountButton("signin")}>
+                        ログイン
+                      </Button>
+                    </Grid>
+                    <Grid item>
+                      <Button onClick={onClickAccountButton("signup")}>
+                        新規登録
+                      </Button>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
+              )}
             </Hidden>
             <Hidden mdUp>
               <Grid item>

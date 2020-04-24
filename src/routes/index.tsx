@@ -6,6 +6,7 @@ import Modal from "../components/Modal";
 import Landing from "../pages/Landing";
 import Page404 from "../pages/Page404"
 import useModal from "../hooks/useModal";
+import LoginCard from "../components/LoginCard";
 
 type RouteType = {
   path: string;
@@ -39,15 +40,15 @@ const configureRoutes = (Layout: React.FC, routes: Routes) => {
 };
 
 const Routes = () => {
-  const [{ show }, setShow] = useModal("login");
+  const [{ show, meta }, setShow] = useModal("signin");
   return (
     <Router>
       <Switch>
         {configureRoutes(Main, mainRoutes)}
         <Route render={() => <Page404 />} />
       </Switch>
-      <Modal show={show} setShow={setShow} title="Login/Signup">
-        <div>Something Modal</div>
+      <Modal show={show} setShow={setShow} title="Signin/Signup">
+        <LoginCard defaultType={meta?.type} />
       </Modal>
     </Router>
   );

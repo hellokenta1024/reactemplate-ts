@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+
 import useModal from "../hooks/useModal";
+import { logout } from "../redux/actions/account";
 
 const Container = styled.div`
   width: 260px;
@@ -11,24 +14,61 @@ const Container = styled.div`
   }
 `;
 
-const Sidebar = () => {
-  const [, setShowModal] = useModal("login");
-  const onClickButton = (type: string) => () => {
-    setShowModal(true, { type });
+const Authenticated = ({ name }: { name?: string }) => {
+  const dispatch = useDispatch();
+  const onClickLogout = () => {
+    dispatch(logout());
   };
   return (
-    <Container>
-      <div>
-        Sidebar
-      </div>
+    <>
+      {name && <div>{`Hello, ${name}!`}</div>}
       <Button
         variant="contained"
         color="primary"
         fullWidth
-        onClick={onClickButton('signin')}
+        onClick={onClickLogout}
       >
-        Login
+        Logout
       </Button>
+    </>
+  );
+};
+
+const Unauthenticated = () => {
+  const [, setShowModal] = useModal("signin");
+  const onClickButton = (type: string) => () => {
+    setShowModal(true, { type });
+  };
+  return (
+    <>
+      <Button
+        variant="contained"
+        color="primary"
+        fullWidth
+        onClick={onClickButton("signin")}
+      >
+        Signin
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        fullWidth
+        onClick={onClickButton("signup")}
+      >
+        Signup
+      </Button>
+    </>
+  );
+};
+
+const Sidebar = () => {
+  const { isLoggedIn, name } = useSelector((state) => {
+    return { isLoggedIn: Boolean(state.account), name: state.account?.name };
+  });
+
+  return (
+    <Container>
+      {isLoggedIn ? <Authenticated name={name} /> : <Unauthenticated />}
     </Container>
   );
 };

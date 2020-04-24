@@ -6,7 +6,7 @@ export type ModalState = {
 }
 
 const initialState: ModalState = {
-  login: { show: false },
+  signin: { show: false },
 };
 
 const modalsReducer = reducerWithInitialState(initialState)
