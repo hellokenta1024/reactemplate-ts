@@ -1,3 +1,5 @@
+**This is a template for a react app that uses Firebase, Typescript, Redux, React Router and Styled Component**
+
 ## Setup
 
 - `yarn install`
@@ -18,7 +20,14 @@
 - Please remove image files for screenshot in README
   - `rm default-screen.gif desktop.png logout.png`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Default Screen
+![](default-screen.gif)
+
+### Desktop
+![](desktop.png)
+
+### When you login
+![](logout.png)
 
 ## Available Scripts
 
