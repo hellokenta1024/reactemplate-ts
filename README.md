@@ -15,6 +15,8 @@
         - `firebase deploy --only functions:createUserRecordHook`
 - Uncommentout the code to setup the firebase user in `/src/App.tsx` file
 - That's it! You already have `Authentication` and `Database` setup!
+- Please remove image files for screenshot in README
+  - `rm default-screen.gif desktop.png logout.png`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
