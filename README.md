@@ -1,3 +1,20 @@
+## Setup
+
+- `yarn install`
+- `yarn start` if you want to confirm if you can run the app so far
+- Setup Firebase Project for web app. Basically follow this instruction! ([https://firebase.google.com/docs/web/setup](https://firebase.google.com/docs/web/setup))
+    - Access to Firebase Console ([https://console.firebase.google.com/](https://console.firebase.google.com/))
+    - In the firebase console, click Add project, then select or enter a Project name
+    - In the top of the firebase console, click the Web icon (</>) to launch the setup workflow
+    - In the settings page of your project, copy your firebase config and overwrite the config in  `/src/utils/firebase.ts` file
+    - In the firebase console, click `Database` tab and create firestore ([https://firebase.google.com/docs/firestore/quickstart](https://firebase.google.com/docs/firestore/quickstart?hl=ja))
+    - In the firebase console, click `Authentication` tab and enable email and password login ([https://firebase.google.com/docs/auth](https://firebase.google.com/docs/auth?hl=ja))
+    - Rewrite `reactemplate-ts` with your project's name in `.firebaserc` file. you can see it in the settings page.
+    - We already have a `Function` that adds a record to the `Users` table in `Firestore` when a user is created in `Firebase Authentication`. So just deploy it.
+        - `cd functions` and `yarn install`
+        - `firebase deploy --only functions:createUserRecordHook`
+- That's it! You already have `Authentication` and `Database` setup!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
