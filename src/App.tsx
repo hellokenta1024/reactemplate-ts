@@ -14,24 +14,25 @@ function App() {
   // You should uncomment after setup firebase config
   // Go to /utils/firebase.ts and setup!
 
-  const setupUser = useCallback(
-    async (userAuth: firebase.User | null) => {
-      if (!userAuth) {
-        dispatch(setAccount(null));
-        return;
-      }
+  // const setupUser = useCallback(
+  //   async (userAuth: firebase.User | null) => {
+  //     if (!userAuth) {
+  //       dispatch(setAccount(null));
+  //       return;
+  //     }
 
-      await dispatch(getCurrentUser());
-      return;
-    },
-    [dispatch]
-  );
+  //     await dispatch(getCurrentUser());
+  //     return;
+  //   },
+  //   [dispatch]
+  // );
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      setupUser(user);
-    });
-  }, [setupUser]);
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged(async (user) => {
+  //     setupUser(user);
+  //   });
+  // }, [setupUser]);
+
   return (
     <React.Fragment>
       <StylesProvider injectFirst>
