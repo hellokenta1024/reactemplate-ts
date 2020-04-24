@@ -13,6 +13,7 @@
     - We already have a `Function` that adds a record to the `Users` table in `Firestore` when a user is created in `Firebase Authentication`. So just deploy it.
         - `cd functions` and `yarn install`
         - `firebase deploy --only functions:createUserRecordHook`
+- Uncommentout the code to setup the firebase user in `/src/App.tsx` file
 - That's it! You already have `Authentication` and `Database` setup!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
